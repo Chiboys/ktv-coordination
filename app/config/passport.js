@@ -12,7 +12,7 @@ module.exports =
 			{
 				clientID:process.env.CLIENTID,
 				clientSecret:process.env.SECRET,
-				callbackURL:'http://127.0.0.1:8080/auth/github/callback'//process.env.CALLBACKURL
+				callbackURL:process.env.CALLBACKURL
 			}	,
 					function(accessToken,refreshToken,profile,done){
 						done(profile.id,done);
