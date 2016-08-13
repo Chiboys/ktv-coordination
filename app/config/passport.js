@@ -15,7 +15,7 @@ module.exports =
 				callbackURL:process.env.CALLBACKURL
 			}	,
 					function(accessToken,refreshToken,profile,done){
-						done(profile.id,done);
+						done(null,profile.id);
 				
 				}
 		));
