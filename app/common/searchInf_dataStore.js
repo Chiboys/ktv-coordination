@@ -2,7 +2,7 @@
 var AjaxFunctions = require('./ajaxFunction_server');
 var User = require('../model/user');
 module.exports = function(){
-	var ajaxFunctions = new AjaxFucntions;
+	var ajaxFunctions = new AjaxFunctions;
 	this.searchInf = function(req,res){
 		var url = 'http://api.duoyun.io/pdc'
 			+'?partnerId='+process.env.partnerId
