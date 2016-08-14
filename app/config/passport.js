@@ -28,10 +28,11 @@ module.exports =
 								newUser.save(function(err){
 									if(err){ throw err;}
 								});
+								done(null,newUser);
 							}
 						
 						});
-					//	done(null,profile);
+						
 				}
 		));
 

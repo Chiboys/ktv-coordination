@@ -11,4 +11,4 @@ var User = new Schema({
 	},{
 	versionKey:false
 	});
-module.exports = Mongoose.model('User',User);
+module.exports = Mongoose.model('KTVUSER',User);
