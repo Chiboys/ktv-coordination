@@ -1,5 +1,5 @@
 'use strict';
-var searchInf_dataStore = require('../common/searchInf_dataStore');
+var searchUtil = require('../common/searchInf_dataStore');
 module.exports = function(app,passport){
 	var base = process.cwd();
 	var cache = null;
@@ -22,7 +22,7 @@ module.exports = function(app,passport){
 			});
 	app.get('/search/:pn',function(req,res,next){
 		if(req.isAuthenticated()){
-			searchInf_dataStore.dataStore(req,res,next);
+			searchUtil.dataStore(req,res,next);
 		}else{
 			next();
 			console.log('here');
