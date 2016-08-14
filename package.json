@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/WangLiuLiuWang/ktv-coordination#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
+    "mongoose": "^4.5.8",
     "passport": "^0.3.2",
-    "passport-github": "^1.1.0"
+    "passport-github": "^1.1.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }

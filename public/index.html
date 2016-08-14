@@ -12,29 +12,32 @@
   <div>
 	<!-- log in .here should have a log-in page ,but just for simplifing that-->  
     <div>
-	<p><a href='/login'>log in></a></p>
+	<p><a href='/login'>log in</a></p>
 	</div>
 	<!-- sign up-->  
   	<div>
 	<p><a>sign up</a></p>
 	</div>
-
-  
-  
-  
   </div>
- 
- 
- 
+
+<!-- search tooltip --> 
   <div>
- 	<input type='text' id='searchText' placeholder="enter your city's name"></input>
+  <form action='/search/0' method='GET'>
+ 	<input type='text' id='searchWord'name=='searchWord' placeholder="enter your city's name"></input>
  		<span>
- 			<button type='button'class='btn btn-info'>
+ 			<button type='submit'class='btn btn-info'id='search'>
  				<span>
  					<i class='fa fa-search'></i>
  				</span>Search
  			</button>
 		</span>
+  </form>
+  </div>
+
+<!-- result show  -->
+  <div id = 'result'>
+	
+
   </div>
  </body>
 </html>

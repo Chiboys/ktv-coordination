@@ -5,16 +5,22 @@ var session = require('express-session');
 var dotenv = require('dotenv');
 var passport_config = require('./app/config/passport');
 var route = require('./app/routes/index');
+var mongoose = require('mongoose');
+var bodyparser = require('body-parser');
 var app = express();
-//¶Ôpassword½øÐÐÊôÐÔÉèÖÃ£¬Î´Íê
+//ï¿½ï¿½passwordï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½Î´ï¿½ï¿½
 
 dotenv.load();
+
+mongoose.connect(process.env.MONGOOSE_URL);
+
+app.use(bodyparser.urlencoded({extended:false}))
 
 app.use(session({
 	secret:"secret",
 	resave:false,
 	saveUninitialized:true
-		//sessionµÄºóÁ½¸ö²ÎÊý£¬²»Çå³þ¾ßÌåµÄº¬Òå
+		//sessionï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
 }));
 
 passport_config(passport);
@@ -25,7 +31,7 @@ route(app,passport);
 
 app.use('/html',express.static(process.cwd()+'/public'));
 app.use('/js',express.static(process.cwd()+'/app'));
-//Ã»ÓÐµ¼Èëdenv°ü£¬ÉèÖÃ±äÁ¿PORT
+
 var port = process.env.PORT||8080;
 app.listen(port,function(){
 	console.log('listen to '+port);
