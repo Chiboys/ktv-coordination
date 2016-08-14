@@ -1,4 +1,4 @@
-var Mongoose = require('Mongoose');
+var Mongoose = require('mongoose');
 var Schema = Mongoose.Schema;
 var User = new Schema({
 	id:String,
