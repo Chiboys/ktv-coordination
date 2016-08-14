@@ -23,12 +23,14 @@ module.exports = function(app,passport){
 	app.get('/search/:pn',function(req,res,next){
 		if(req.isAuthenticated()){
 			searchUtil.dataStore(req,res,next);
+			console.log('dataStore')
+				next();
 		}else{
 			next();
-			console.log('here');
+			console.log('not login');
 		}
 	},function(req,res){
-		console.log('and');
+		console.log('dataSearcher');
 		res.end('');
 	});
 
