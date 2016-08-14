@@ -1,8 +1,9 @@
 'use strict';
-var searchUtil = new require('../common/searchInf_dataStore');
+var SearchUtil =require('../common/searchInf_dataStore');
 module.exports = function(app,passport){
 	var base = process.cwd();
 	var cache = null;
+	var searchUtil = new SearchUtil;
 	var isLogIn = function(req,res,next){
 		if(req.isAuthenticated()){
 			next();
