@@ -19,7 +19,7 @@ module.exports =
 						User.findOne({id:profile.id},{_id:false},function(err,user){
 							if(err){ throw err;}
 							if(user){
-								return done(null,user);
+								return done(null,user.id);
 							}else{
 								var newUser = new User();
 								newUser.id = profile.id;
@@ -28,7 +28,7 @@ module.exports =
 								newUser.save(function(err){
 									if(err){ throw err;}
 								});
-								done(null,newUser);
+								return done(null,newUser.id);
 							}
 						
 						});
