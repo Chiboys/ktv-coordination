@@ -29,7 +29,7 @@ module.exports = function(app,passport){
 		}
 	},function(req,res){
 		console.log('and');
-		res.end(req.header);
+		res.end('');
 	});
 
 }

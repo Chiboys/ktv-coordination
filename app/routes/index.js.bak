@@ -22,8 +22,7 @@ module.exports = function(app,passport){
 			});
 	app.get('/search/:pn',function(req,res,next){
 		if(req.isAuthenticated()){
-			searchUtil.dataStore(req,res);
-			next();
+			searchUtil.dataStore(req,res,next);
 		}else{
 			next();
 			console.log('here');
