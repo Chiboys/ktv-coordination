@@ -20,7 +20,7 @@ module.exports = function(){
 				return res.json(data.data);
 			}
 		};
-		ajaxFunctions.ajaxRequire('get',url,dataDeal);
+		ajaxFunctions.ajaxRequest('get',url,dataDeal);
 	};
 	this.dataStore = function(req,res,next){
 		//使用本函数，请务必确认已认证；
