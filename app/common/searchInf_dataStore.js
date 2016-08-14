@@ -1,7 +1,8 @@
 'use strict';
-var ajaxFunctions = require('./ajaxFunction_server');
+var AjaxFunctions = require('./ajaxFunction_server');
 var User = require('../model/user');
 module.exports = function(){
+	var ajaxFunctions = new AjaxFucntions();
 	this.searchInf = function(req,res){
 		var url = 'http://api.duoyun.io/pdc'
 			+'?partnerId='+process.env.partnerId
