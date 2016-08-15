@@ -21,7 +21,11 @@ module.exports = function(app,passport){
 			}),function(req,res){
 				res.redirect('/');
 			});
-	app.get('/search/:pn',function(req,res,next){
+	app.post('/search/:pn',function(req,res,next){
+		req.params.pn = parseInt(req.params.pn);
+		if(!req.params.pn){
+			req.params.pn = 0;
+		}
 		if(req.isAuthenticated()){
 			searchUtil.dataStore(req,res,next);
 			console.log('dataStore')

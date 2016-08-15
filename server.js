@@ -12,7 +12,7 @@ var app = express();
 
 dotenv.load();
 
-mongoose.connect(process.env.MONGOOSE_URL);
+mongoose.connect(process.env.MONGOOSE_URLS||process.env.MONGOOSE_URL);
 
 app.use(bodyparser.urlencoded({extended:false}))
 
@@ -26,6 +26,9 @@ app.use(session({
 passport_config(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use('/config',express.static(process.cwd()+'/app/config'));
+app.use('/controllers',express.static(process.cwd()+'/app/controllers'));
 
 route(app,passport);
 

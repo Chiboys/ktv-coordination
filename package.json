@@ -21,9 +21,11 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
+    "form-data": "^1.0.0-rc4",
     "mongoose": "^4.5.8",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
+    "request": "^2.74.0",
     "xmlhttprequest": "^1.8.0"
   }
 }

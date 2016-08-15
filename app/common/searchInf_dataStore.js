@@ -1,27 +1,14 @@
 'use strict';
-var AjaxFunctions = require('./ajaxFunction_server');
+var ajaxFunctions = require('./ajaxFunction_server');
 var User = require('../model/user');
+var XmlHttp = require('xmlhttprequest').XMLHttpRequest;
+var request = require('request');
 module.exports = function(){
-	var ajaxFunctions = new AjaxFunctions;
 	this.searchInf = function(req,res){
-		var url = 'http://api.duoyun.io/pdc'
-			+'?partnerId='+process.env.partnerId
-			+'&token='+process.env.token
-			+'&apiId='+process.env.apiId
-			+'&rn=15'
-			+'&pn='+req.params.pn
-			+'&fields=&cityName='
-			+req.body.searchWord;
-		var dataDeal = function(data){
-			data = JSON.parse(data);
-			if(data.resultcode !== 200 || data.data.total === 0){
-				return res.end('0');
-			}else{
-				return res.json(data.data);
-			}
+		var r = request.get('http://api.duoyun.io/pdc', function optionalCallback(err, httpResponse, body) {
+			console.log(httpResponse);
+		});
 		};
-		ajaxFunctions.ajaxRequest('get',url,dataDeal);
-	};
 	this.dataStore = function(req,res,next){
 		//使用本函数，请务必确认已认证；
 		//存储查询的word 修改前端，使用form发送数据
@@ -40,4 +27,5 @@ module.exports = function(){
 		});
 		next();
 	};
-};
+
+}

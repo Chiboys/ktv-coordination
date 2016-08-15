@@ -22,22 +22,21 @@
 
 <!-- search tooltip --> 
   <div>
-  <form action='/search/0' method='GET'>
- 	<input type='text' id='searchWord'name=='searchWord' placeholder="enter your city's name"></input>
+ 	<input type='text' id='searchWord'placeholder="enter your city's name"></input>
  		<span>
- 			<button type='submit'class='btn btn-info'id='search'>
+ 			<button type='submit'id='search'>
  				<span>
  					<i class='fa fa-search'></i>
  				</span>Search
  			</button>
 		</span>
-  </form>
   </div>
 
 <!-- result show  -->
   <div id = 'result'>
-	
-
   </div>
+  <script type='text/javascript'src='/config/baseData.js'></script>
+  <script type='text/javascript'src='/controllers/searchEngine.js'></script>
+  <script type='text/javascript'src='/controllers/index_client.js'></script>
  </body>
 </html>

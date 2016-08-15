@@ -6,9 +6,8 @@ var result = document.getElementById('result');
 var eleArr = [];
 var update = function(data){
 	result.innerHTML = '';
-	if(data !== '0'){
-		//��û�����ݵ�ʱ�򣬷���������0
-		data = JSON.parse(data).dataList;
+	if(data.resultcode === 200 && data.data !== '204501'){
+		data = data.data.dataList;
 		data.forEach(function(ele){
 			//name  address phone intro picUrl
 			var div = document.createElement('div');
@@ -17,9 +16,9 @@ var update = function(data){
 			var address = document.createElement('p');
 			var picUrl = document.createElement('a');
 			if(typeof ele.name !== 'undefined'){
-				name.innerHTML ='Name: '+ ele.name;
+				name.innerHTML =ele.name;
 			}else{
-				name.innerHTML = 'Name: no information about name';
+				name.innerHTML = 'no information about name';
 				name.style['color'] = 'gray';
 			}
 			div.append(name);
@@ -37,26 +36,27 @@ var update = function(data){
 				address.style['color'] = 'gray';
 			}
 			div.append(address);
-			if(typeof ele.picUrl !== 'undefined'){
+			if(typeof ele.picUrl !== 'undefined' && ele.picUrl){
 				picUrl.setAttribute('href',ele.picUrl);
 				div.append(picUrl);
 			}
-				result.appendChild(div);
+			result.appendChild(div);
 		});	
 	}
 }
-//������()��
-var searchInf = function(city,pn){
+var searchInf = function(pn){
 	//if loaded just now ,asign city 'start'
-	var num = 0;
-	if(arguments.length === 2){
-		 num = pn;
+	var words = searchWord.value;
+	var pageNum = 0;
+	if(arguments.length !== 0){
+		pageNum = pn;
 	}
-	var url = '/search/'+num;
-		if(arguments.length === 0 || cache === null){
-			cache = searchWord.value;
-		}
-		if(cache !== null){
-			ajaxFunctions.ajaxRequest('get',url,update);
-		}	
-	}
+	var url = 'http://api.duoyun.io/pdc?partnerId="'
+	+baseData.partnerId
+	+'"&token="'+baseData.token
+	+'"&apiId="'+baseData.apiId
+	+'"&rn=15&pn='+0
+	+'&cityName="'+words+'"';
+	searchEngine(words,'get',url,update);
+}
+search.addEventListener('click',searchInf);
