@@ -14,17 +14,13 @@
     <div>
 	<p><a href='/login'>log in</a></p>
 	</div>
-	<!-- sign up-->  
-  	<div>
-	<p><a>sign up</a></p>
-	</div>
   </div>
 
 <!-- search tooltip --> 
   <div>
- 	<input type='text' id='searchWord'placeholder="enter your city's name"></input>
+ 	<input type='text' id='searchWord'name='searchWord' placeholder="enter your city's name"pattern='\w+'></input>
  		<span>
- 			<button type='submit'id='search'>
+ 			<button type='button'id='search'>
  				<span>
  					<i class='fa fa-search'></i>
  				</span>Search
@@ -34,9 +30,10 @@
 
 <!-- result show  -->
   <div id = 'result'>
+  
   </div>
-  <script type='text/javascript'src='/config/baseData.js'></script>
-  <script type='text/javascript'src='/controllers/serachEngine.js'></script>
+  <script type='text/javascript'src='/controllers/ajaxFunctions_client.js'></script>
   <script type='text/javascript'src='/controllers/index_client.js'></script>
+  <script type='text/javascript'src='/controllers/index_intialize_client.js'></script>
  </body>
 </html>

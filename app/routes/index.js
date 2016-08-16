@@ -13,7 +13,7 @@ module.exports = function(app,passport){
 	}
 	app.get('/',function(req,res){
 		res.sendFile(base+'/public/index.html');
-			});
+	});
 			//这里的话，我想来个在client加个初始化
 	app.get('/login',passport.authenticate('github'));
 	app.get('/auth/github/callback',passport.authenticate('github',{
@@ -21,18 +21,35 @@ module.exports = function(app,passport){
 			}),function(req,res){
 				res.redirect('/');
 			});
-	app.post('/search/:pn',function(req,res,next){
-		req.params.pn = parseInt(req.params.pn);
-		if(!req.params.pn){
-			req.params.pn = 0;
-		}
+			//鉴于在前端对数据进行排版处理，因而搜索地址加上搜索词
+	app.get('/search/:searchWord',function(req,res,next){
+//		req.params.pn = parseInt(req.params.pn);
+//		if(!req.params.pn){
+//			req.params.pn = 0;
+//		}
 		if(req.isAuthenticated()){
-			searchUtil.dataStore(req,res,next);
-			console.log('dataStore')
+			console.log('authenticated -----------')
+			if(req.params.searchWord === 'start'){
+				console.log('start --------------')
+				searchUtil.getLatest(req,res,searchUtil.searchInf);
+				return;
+//				if(word){
+//					req.params.searchWord = word;
+//					console.log('get the searchword before:'+word);
+//				}else{
+//					return {value:null,message:'you have\'t searched infor yet'};
+//				}
+			}else{
+				searchUtil.dataStore(req,res);
+				console.log('dataStore')
+			}
+			
 		}else{
-			next();
-			console.log('not login');
+			if(req.params.searchWord === 'start'){
+				return;
+			}
 		}
+			next();
 	},searchUtil.searchInf);
 
 }

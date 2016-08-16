@@ -7,8 +7,7 @@
 
 */
 (function(){
-	search.setAttribute('onclick','searchInf()');//初始化搜索按钮
-	var url = '/search/json/start';
-	ajaxFunctions.read(ajaxFunctions.ajaxRequest('get',url,update));
-
+	//search.setAttribute('onclick','searchInf()');//初始化搜索按钮
+		var url = '/search';console.log(typeof update);
+		ajaxFunctions.ready(ajaxFunctions.searchEngine('start','get',url,update));	
 })();

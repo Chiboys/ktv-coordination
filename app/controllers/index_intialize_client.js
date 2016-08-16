@@ -8,7 +8,6 @@
 */
 (function(){
 	//search.setAttribute('onclick','searchInf()');//³õÊ¼»¯ËÑË÷°´Å¥
-	var url = '/search/json/start';
-	ajaxFunctions.read(ajaxFunctions.ajaxRequest('get',url,update));
-
+		var url = '/search';
+		ajaxFunctions.ready(ajaxFunctions.searchEngine('start','get',url,update));	
 })();
